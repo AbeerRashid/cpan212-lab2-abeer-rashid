@@ -11,17 +11,14 @@ export function validateTool(req, res, next) {
     return res.status(400).json({ error: { message: 'Request body must be a JSON object' } });
   }
 
-  // Every rule that fails adds a message here, so the client sees all the problems at once.
   const errors = {};
 
-  // name: text, 2 to 60 characters after trimming spaces from both ends.
-  // This rule is done for you. Use it as the pattern for the other four.
   const name = typeof body.name === 'string' ? body.name.trim() : '';
   if (name.length < 2 || name.length > 60) {
     errors.name = 'name must be 2 to 60 characters';
   }
 
-if (!CATEGORIES.includes(body.caterogy)) {
+if (!CATEGORIES.includes(body.category)) {
   errors.category = 'cateory must be one of: power, hand, garden, cleaning';
 }
 

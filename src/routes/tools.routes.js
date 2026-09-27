@@ -7,7 +7,6 @@ import { validateTool } from '../middleware/validate-tool.js';
 // '/' here means /api/tools, and '/:id' means /api/tools/<some id>.
 export const toolsRouter = Router();
 
-// GET /api/tools sends every tool. This route already works.
 toolsRouter.get('/', (req, res) => {
   const category = req.query.category;
 
@@ -48,7 +47,7 @@ toolsRouter.put('/:id', validateTool, (req, res) => {
   const tool = tools.find((t) => t.id === req.params.id);
 
   if (!tool) {
-    return res.status(404).json({ error: { message: `Tool not found: ${req.params.id}` } });
+    return res.status(404).json({ error: { message: 'Tool not found: ${req.params.id}' } });
   }
 
   Object.assign(tool, req.body);
