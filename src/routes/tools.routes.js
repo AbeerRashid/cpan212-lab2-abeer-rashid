@@ -18,8 +18,8 @@ toolsRouter.get('/', (req, res) => {
   if (!CATEGORIES.includes(category)) {
     return res.status(400).json({
       error: {
-        message: 'invalid query',
-        details: `category :${category} must be one of: power, hand, garden, cleaning`
+        message: 'Invalid query',
+        details: { category: 'category must be one of: power, hand, garden, cleaning' }
       }
     });
   }
