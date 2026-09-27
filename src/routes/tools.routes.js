@@ -19,18 +19,22 @@ toolsRouter.get('/', (req, res) => {
     return res.status(400).json({
       error: {
         message: 'invalid query',
-        details: `category :${category} must be one of: power, hand, garden, cleaning` }
+        details: `category :${category} must be one of: power, hand, garden, cleaning`
+      }
     });
   }
-    const matching = tools.filter((tool) => tool.category === category);
-    res.json({ data: matching });
+
+  const matching = tools.filter((tool) => tool.category === category);
+  res.json({ data: matching });
 });
 
 toolsRouter.get('/:id', (req, res) => {
   const tool = tools.find((t) => t.id === req.params.id);
+
   if (!tool) {
     return res.status(404).json({ error: { message: `Tool id not found: ${req.params.id}` } });
   }
+
   res.json({ data: tool });
 });
 
@@ -44,11 +48,20 @@ toolsRouter.put('/:id', validateTool, (req, res) => {
   const tool = tools.find((t) => t.id === req.params.id);
 
   if (!tool) {
-    return res.status(404).json({ error: { message: `Tool not found: } });
+    return res.status(404).json({ error: { message: `Tool not found: ${req.params.id}` } });
   }
 
   Object.assign(tool, req.body);
   res.json({ data: tool });
 });
 
-// TODO (you): STEP 7. DELETE /api/tools/:id removes a tool.
+toolsRouter.delete('/:id', (req, res) => {
+  const index = tools.findIndex((t) => t.id === req.params.id);
+
+  if (index === -1) {
+    return res.status(404).json({ error: { message: `Tool not found: ${req.params.id}` } });
+  }
+
+  tools.splice(index, 1);
+  res.status(204).end();
+});
