@@ -1,6 +1,6 @@
 # Tool Library API
 
-<!-- Replace this line with one or two sentences about the project in your own words. -->
+<!-- "This project is a RESTful API built with Express and Node.js for a community tool lending library, providing endpoints to list, filter, inspect, create, update, and remove tools." -->
 
 Live: <!-- your Render address, for example https://cpan212-lab2-jane-doe.onrender.com/api/tools -->
 
@@ -34,4 +34,4 @@ This tries every route and prints which checks pass.
 
 ## AI use
 
-<!-- List each AI tool you used and what you used it for, or write "No AI tools used." -->
+<!-- "AI Use: Used Gemini to explain Express routing and middleware concepts (like req.query, req.params, and validation logic), clarify HTTP status codes, and assist with debugging test suite outputs."" -->
